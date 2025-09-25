@@ -27,6 +27,11 @@ export async function POST(request: NextRequest) {
       jeffNumber
     })
 
+    // Ensure jeffEntry.id exists before proceeding
+    if (!jeffEntry?.id) {
+      throw new Error('Failed to create Jeff entry - no ID returned')
+    }
+
     // Generate certificates with proper type safety
     const dateRegistered: string = new Date().toISOString().split('T')[0]
     
@@ -48,7 +53,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       jeffNumber,
-      jeffId: jeffEntry.id,
+      jeffId: jeffEntry.id, // Now TypeScript knows this is definitely a string
       message: `Welcome, Jeff #${jeffNumber}!`
     })
 
