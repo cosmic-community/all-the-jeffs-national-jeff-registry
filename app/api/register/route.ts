@@ -27,8 +27,8 @@ export async function POST(request: NextRequest) {
       jeffNumber
     })
 
-    // Ensure jeffEntry.id exists before proceeding
-    if (!jeffEntry?.id) {
+    // Ensure jeffEntry and jeffEntry.id exist before proceeding
+    if (!jeffEntry || !jeffEntry.id) {
       throw new Error('Failed to create Jeff entry - no ID returned')
     }
 
