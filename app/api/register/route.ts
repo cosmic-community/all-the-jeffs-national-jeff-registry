@@ -33,8 +33,8 @@ export async function POST(request: NextRequest) {
     }
 
     // At this point, TypeScript knows jeffEntry.id is defined due to the check above
-    // Use non-null assertion since we've explicitly checked for existence
-    const jeffId: string = jeffEntry.id!
+    // Use explicit type assertion since we've validated the existence
+    const jeffId: string = jeffEntry.id
 
     // Generate certificates with proper type safety
     const dateRegistered: string = new Date().toISOString().split('T')[0]
