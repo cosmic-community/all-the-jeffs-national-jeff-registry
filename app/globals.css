@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 37 99 235;
+    --primary-foreground: 255 255 255;
+    --secondary: 248 250 252;
+    --secondary-foreground: 100 116 139;
+    --accent: 37 99 235;
+    --accent-foreground: 255 255 255;
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+    --border: 226 232 240;
+    --background: 255 255 255;
+    --foreground: 15 23 42;
+  }
+  
+  html {
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  .certificate-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, #f8fafc 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, #f1f5f9 0%, transparent 50%);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border px-6 py-3 rounded-lg font-medium transition-colors;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors;
+  }
+  
+  .card {
+    @apply bg-background border border-border rounded-lg shadow-sm;
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  }
+}
