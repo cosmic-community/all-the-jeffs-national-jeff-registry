@@ -27,11 +27,13 @@ export async function POST(request: NextRequest) {
       jeffNumber
     })
 
-    // Generate certificates
+    // Generate certificates with proper type safety
+    const dateRegistered: string = new Date().toISOString().split('T')[0]
+    
     const certificateData = {
       jeffNumber,
       name: 'Jeff',
-      dateRegistered: new Date().toISOString().split('T')[0]
+      dateRegistered
     }
 
     // Generate PDF and image certificates
