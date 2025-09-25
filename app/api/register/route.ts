@@ -53,7 +53,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       jeffNumber,
-      jeffId: jeffEntry.id, // Now TypeScript knows this is definitely a string
+      jeffId: jeffEntry.id as string, // Type assertion after null check
       message: `Welcome, Jeff #${jeffNumber}!`
     })
 
