@@ -32,9 +32,8 @@ export async function POST(request: NextRequest) {
       throw new Error('Failed to create Jeff entry - no ID returned')
     }
 
-    // At this point, TypeScript knows jeffEntry.id is defined due to the check above
-    // Use explicit type assertion since we've validated the existence
-    const jeffId: string = jeffEntry.id
+    // Now TypeScript knows jeffEntry.id is definitely a string due to the check above
+    const jeffId = jeffEntry.id
 
     // Generate certificates with proper type safety
     const dateRegistered: string = new Date().toISOString().split('T')[0]
@@ -57,7 +56,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       jeffNumber,
-      jeffId, // Now using the properly typed variable
+      jeffId,
       message: `Welcome, Jeff #${jeffNumber}!`
     })
 
