@@ -19,14 +19,6 @@ export interface JeffEntry extends CosmicObject {
     location?: string;
     age?: number;
     jeff_number: number;
-    certificate_pdf?: {
-      url: string;
-      imgix_url?: string;
-    };
-    certificate_image?: {
-      url: string;
-      imgix_url: string;
-    };
     share_link: string;
     social_preview_text: string;
     date_registered: string;
@@ -77,12 +69,4 @@ export interface RegistrationFormData {
   email?: string;
   location?: string;
   age?: number;
-}
-
-// Certificate generation response
-export interface CertificateResponse {
-  jeffNumber: number;
-  pdfUrl: string;
-  imageUrl: string;
-  shareUrl: string;
 }

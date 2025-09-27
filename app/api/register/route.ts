@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getNextJeffNumber, createJeffEntry } from '@/lib/cosmic'
-import { generateCertificatePDF, generateCertificateImage } from '@/lib/certificate-generator'
 
 export async function POST(request: NextRequest) {
   try {
@@ -32,26 +31,7 @@ export async function POST(request: NextRequest) {
       throw new Error('Failed to create Jeff entry - no ID returned')
     }
 
-    // Now TypeScript knows jeffEntry.id is definitely a string due to the check above
     const jeffId = jeffEntry.id
-
-    // Generate certificates with proper type safety
-    const dateRegistered: string = new Date().toISOString().split('T')[0]
-    
-    const certificateData = {
-      jeffNumber,
-      name: 'Jeff',
-      dateRegistered
-    }
-
-    // Generate PDF and image certificates
-    const [pdfBuffer, imageBuffer] = await Promise.all([
-      generateCertificatePDF(certificateData),
-      generateCertificateImage(certificateData)
-    ])
-
-    // In a real application, you would upload these to your file storage
-    // For now, we'll return success with the Jeff number
     
     return NextResponse.json({
       success: true,

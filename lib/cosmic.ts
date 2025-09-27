@@ -51,9 +51,7 @@ export async function createJeffEntry(data: {
         jeff_number: jeffNumber,
         share_link: shareLink,
         social_preview_text: socialPreviewText,
-        date_registered: new Date().toISOString().split('T')[0],
-        certificate_pdf: null,
-        certificate_image: null
+        date_registered: new Date().toISOString().split('T')[0]
       }
     });
     
@@ -150,35 +148,5 @@ export async function getPageBySlug(slug: string) {
       return null;
     }
     throw new Error('Failed to fetch page');
-  }
-}
-
-// Update Jeff entry with certificate files
-export async function updateJeffWithCertificates(jeffId: string, certificateData: {
-  pdfUrl?: string;
-  imageUrl?: string;
-}) {
-  try {
-    const updateMetadata: any = {};
-    
-    if (certificateData.pdfUrl) {
-      updateMetadata.certificate_pdf = { url: certificateData.pdfUrl };
-    }
-    
-    if (certificateData.imageUrl) {
-      updateMetadata.certificate_image = { 
-        url: certificateData.imageUrl,
-        imgix_url: certificateData.imageUrl
-      };
-    }
-    
-    await cosmic.objects.updateOne(jeffId, {
-      metadata: updateMetadata
-    });
-    
-    return true;
-  } catch (error) {
-    console.error('Error updating Jeff with certificates:', error);
-    throw new Error('Failed to update Jeff entry');
   }
 }

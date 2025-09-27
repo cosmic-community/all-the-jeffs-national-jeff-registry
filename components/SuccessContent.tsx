@@ -40,42 +40,35 @@ export function SuccessContent({ jeffData }: SuccessContentProps) {
     <div className="max-w-2xl mx-auto text-center">
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Welcome, Jeff #{jeffNumber}
+          Welcome, Jeff #{jeffNumber}!
         </h1>
         <p className="text-xl text-gray-600">
-          Your Certificate of Jeffthenticity is ready.
+          You have been successfully registered in the National Jeff Registry.
         </p>
         <div className="w-24 h-1 bg-primary mx-auto mt-4"></div>
       </div>
 
-      {/* Certificate Preview */}
+      {/* Registry Confirmation */}
       <div className="card p-8 mb-8">
-        <div className="certificate-pattern rounded-lg p-8 border-2 border-gray-200">
-          <div className="text-center">
-            <div className="text-3xl mb-4">🦅</div>
-            <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
-              Official Certificate of Jeffthenticity
-            </h2>
-            <div className="text-gray-700 space-y-2">
-              <p>This certifies that <strong>Jeff #{jeffNumber}</strong></p>
-              <p>has been duly registered in the National Jeff Registry</p>
-              <p className="text-sm text-gray-600 mt-4">
-                <strong>One Nation, Under Jeff</strong>
-              </p>
-            </div>
+        <div className="text-center">
+          <div className="text-6xl mb-4">🦅</div>
+          <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">
+            Official Jeff Registration
+          </h2>
+          <div className="text-gray-700 space-y-2">
+            <p className="text-lg">Congratulations! You are now</p>
+            <p className="text-3xl font-bold text-primary">Jeff #{jeffNumber}</p>
+            <p>in the National Jeff Registry</p>
+            <p className="text-sm text-gray-600 mt-4">
+              <strong>One Nation, Under Jeff</strong>
+            </p>
           </div>
         </div>
       </div>
 
       {/* Action Buttons */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-        <button className="btn-primary">
-          📄 Download PDF Certificate
-        </button>
-        <button className="btn-primary">
-          🖼️ Download Share Image
-        </button>
-        <Link href={`/jeff/${jeffNumber}`} className="btn-secondary">
+        <Link href={`/jeff/${jeffNumber}`} className="btn-primary">
           👀 View Your Jeff Page
         </Link>
         <Link href="/registry" className="btn-secondary">

@@ -43,33 +43,22 @@ export function JeffProfile({ jeffData }: JeffProfileProps) {
         <div className="w-24 h-1 bg-primary mx-auto mt-4"></div>
       </div>
 
-      {/* Certificate Image Preview */}
+      {/* Registry Badge */}
       <div className="card p-8 mb-8">
-        {jeffData.metadata.certificate_image ? (
-          <img
-            src={`${jeffData.metadata.certificate_image.imgix_url}?w=600&h=600&fit=crop&auto=format,compress`}
-            alt={`Certificate of Jeffthenticity for Jeff #${jeffNumber}`}
-            className="w-full max-w-md mx-auto rounded-lg shadow-lg"
-            width={600}
-            height={600}
-          />
-        ) : (
-          <div className="certificate-pattern rounded-lg p-8 border-2 border-gray-200 max-w-md mx-auto">
-            <div className="text-center">
-              <div className="text-3xl mb-4">🦅</div>
-              <h2 className="text-xl font-serif font-bold text-gray-900 mb-4">
-                Official Certificate of Jeffthenticity
-              </h2>
-              <div className="text-gray-700 space-y-2">
-                <p>This certifies that <strong>Jeff #{jeffNumber}</strong></p>
-                <p>has been duly registered in the National Jeff Registry</p>
-                <p className="text-sm text-gray-600 mt-4">
-                  <strong>One Nation, Under Jeff</strong>
-                </p>
-              </div>
-            </div>
+        <div className="text-center">
+          <div className="text-6xl mb-4">🦅</div>
+          <h2 className="text-xl font-serif font-bold text-gray-900 mb-4">
+            Official Jeff Registration
+          </h2>
+          <div className="text-gray-700 space-y-2">
+            <p>This Jeff is registered as</p>
+            <p className="text-2xl font-bold text-primary">Jeff #{jeffNumber}</p>
+            <p>in the National Jeff Registry</p>
+            <p className="text-sm text-gray-600 mt-4">
+              <strong>One Nation, Under Jeff</strong>
+            </p>
           </div>
-        )}
+        </div>
       </div>
 
       {/* Jeff Details */}
