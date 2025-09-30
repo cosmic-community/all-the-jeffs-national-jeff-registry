@@ -18,16 +18,17 @@ export function HallOfFameGrid({ entries }: HallOfFameGridProps) {
   return (
     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       {entries.map((entry) => (
-        <div key={entry.id} className="card p-6 hover:shadow-lg transition-shadow">
+        <article key={entry.id} className="card p-6 hover:shadow-lg transition-shadow">
           <div className="text-center mb-4">
-            <div className="text-4xl mb-2">🏆</div>
+            <div className="text-4xl mb-2" role="img" aria-label="Trophy">🏆</div>
             {entry.metadata.featured_image && (
               <img
-                src={`${entry.metadata.featured_image.imgix_url}?w=400&h=300&fit=crop&auto=format,compress`}
+                src={`${entry.metadata.featured_image.imgix_url}?w=800&h=600&fit=crop&auto=format,compress`}
                 alt={`Featured image for ${entry.title}`}
                 className="w-full h-48 object-cover rounded-lg mb-4"
                 width={400}
                 height={300}
+                loading="lazy"
               />
             )}
           </div>
@@ -62,12 +63,12 @@ export function HallOfFameGrid({ entries }: HallOfFameGridProps) {
             
             <Link
               href={`/jeff/${entry.metadata.featured_jeff.metadata.jeff_number}`}
-              className="btn-secondary"
+              className="btn-secondary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
               View Jeff Profile
             </Link>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   )

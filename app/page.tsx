@@ -17,19 +17,39 @@ export default async function HomePage() {
   const latestJeff = jeffsData.objects[0]
   const featuredJeff = hallOfFameData[0]
 
+  // JSON-LD structured data for SEO
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'All The Jeffs - National Jeff Registry',
+    description: 'The Official Registry of Jeffs in America. Get your Jeff Number, download your certificate, and join the nation of Jeffs.',
+    url: 'https://allthejeffs.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://allthejeffs.com/registry?search={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
+  }
+
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main>
-        <Hero pageData={homepageData} />
-        <HowItWorks />
-        <StatsStrip 
-          totalJeffs={totalJeffs}
-          latestJeff={latestJeff}
-          featuredJeff={featuredJeff}
-        />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className="min-h-screen">
+        <Header />
+        <main id="main-content">
+          <Hero pageData={homepageData} />
+          <HowItWorks />
+          <StatsStrip 
+            totalJeffs={totalJeffs}
+            latestJeff={latestJeff}
+            featuredJeff={featuredJeff}
+          />
+        </main>
+        <Footer />
+      </div>
+    </>
   )
 }
