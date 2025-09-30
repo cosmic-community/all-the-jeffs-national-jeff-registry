@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { getAllJeffs } from '@/lib/cosmic'
+import { JeffEntry } from '@/types'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://allthejeffs.com'
@@ -7,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all Jeff entries for dynamic routes
   const jeffsData = await getAllJeffs(1000, 0) // Get up to 1000 Jeffs
   
-  const jeffRoutes = jeffsData.objects.map((jeff) => ({
+  const jeffRoutes = jeffsData.objects.map((jeff: JeffEntry) => ({
     url: `${baseUrl}/jeff/${jeff.metadata.jeff_number}`,
     lastModified: new Date(jeff.modified_at || jeff.created_at),
     changeFrequency: 'monthly' as const,

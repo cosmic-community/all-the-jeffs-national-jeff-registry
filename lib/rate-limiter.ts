@@ -11,7 +11,8 @@ const store: RateLimitStore = {};
 setInterval(() => {
   const now = Date.now();
   Object.keys(store).forEach(key => {
-    if (store[key].resetTime < now) {
+    const entry = store[key];
+    if (entry && entry.resetTime < now) {
       delete store[key];
     }
   });
@@ -31,7 +32,9 @@ export function rateLimit(
   const now = Date.now();
   const key = identifier;
 
-  if (!store[key] || store[key].resetTime < now) {
+  const existingEntry = store[key];
+  
+  if (!existingEntry || existingEntry.resetTime < now) {
     store[key] = {
       count: 1,
       resetTime: now + windowMs
@@ -43,18 +46,18 @@ export function rateLimit(
     };
   }
 
-  if (store[key].count >= limit) {
+  if (existingEntry.count >= limit) {
     return {
       success: false,
       remaining: 0,
-      resetTime: store[key].resetTime
+      resetTime: existingEntry.resetTime
     };
   }
 
-  store[key].count++;
+  existingEntry.count++;
   return {
     success: true,
-    remaining: limit - store[key].count,
-    resetTime: store[key].resetTime
+    remaining: limit - existingEntry.count,
+    resetTime: existingEntry.resetTime
   };
 }
